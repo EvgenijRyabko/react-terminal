@@ -10,11 +10,11 @@ const Login = () => {
     }
 
     return (
-        <div className="w-12">
-            <label for='login'>Login</label>
+        <div className="text-3xl font-bold underline">
             <input id='login' />
-            <label for='password'>Password</label>
+            <label for='login'>Login</label>
             <input id='password' />
+            <label for='password'>Password</label>
             <button type='submit' onClick={signIn}>Sign in</button>
         </div>
     )

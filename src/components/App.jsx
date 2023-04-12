@@ -4,7 +4,7 @@ import Login from './Login/Login';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="text-3xl font-bold underline">
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/home' element={<Home />} />
