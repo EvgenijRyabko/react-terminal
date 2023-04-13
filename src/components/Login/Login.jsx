@@ -11,7 +11,7 @@ const Login = () => {
   };
 
   return (
-    <div className={ classes.loginForm }>
+    <div className={ classes.loginContainer }>
       <div className="grid content-end row-auto gap-y-12">
         <div className="grid w-full justify-items-center">
           <div className="relative w-3/6 z-0">
