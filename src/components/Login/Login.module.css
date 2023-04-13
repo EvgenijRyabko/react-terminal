@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loginForm {
+    @apply 
+        grid 
+        grid-rows-2 
+        
+        bg-slate-100 
+        
+        shadow-md 
+        shadow-slate-100 
+        
+        rounded-xl 
+        
+        w-9/12 
+        min-w-[700px] 
+        h-3/4 
+        
+        text-xl font-[Roboto];
+}
