@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.loginForm {
+    @apply 
+        grid 
+        grid-rows-3
+        
+        items-center
+        
+        bg-slate-100 
+        
+        shadow-md 
+        shadow-slate-100 
+        
+        rounded-xl 
+        
+        w-9/12 
+        min-w-[700px] 
+        h-3/4 
+        
+        text-xl font-[Roboto];
+}
+
+.buttonContainer {
+    @apply 
+        grid 
+        
+        items-center 
+        justify-items-center
+
+        w-full
+}
+
+.buttonContainer button {
+    @apply 
+        w-1/4 
+        h-[40px] 
+        
+        text-slate-100 
+        
+        bg-amber-500 rounded-md 
+        
+        shadow-md
+        shadow-amber-500 
+        
+        hover:opacity-90 
+        hover:shadow-[0_5px_20px_#f59e0b] 
+        
+        transition duration-500 
+        
+        justify-self-center
+}

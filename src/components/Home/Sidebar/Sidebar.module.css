@@ -1,0 +1,22 @@
+.sidebar {
+    @apply
+        bg-amber-600
+        rounded-[12px_0_0_12px]
+}
+
+.sidebarList {
+    @apply
+        mx-4
+        my-2
+        
+        text-slate-200
+        text-2xl
+        font-semibold
+}
+
+.sidebarList li {
+    @apply
+        my-8
+
+        text-center
+}

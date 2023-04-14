@@ -1,0 +1,62 @@
+.inputsSection {
+    @apply 
+        grid 
+        
+        content-end 
+        row-auto 
+        gap-y-12
+}
+
+.inputContainer {
+    @apply 
+        grid 
+        
+        w-full 
+        
+        justify-items-center
+}
+
+.inputBox {
+    @apply 
+        relative 
+        
+        w-3/6 
+}
+
+.inputBox input {
+    @apply 
+        px-2 
+        
+        w-full 
+        min-h-[40px] 
+        
+        border-2
+        rounded-xl 
+
+        text-slate-600
+        
+        outline-none 
+        
+        bg-transparent 
+        
+        focus:bg-white 
+        focus:border-blue-600
+        
+        transform duration-500
+}
+
+.inputBox input:valid {
+    @apply 
+        bg-white
+}
+
+.inputBox input:invalid:not(:placeholder-shown) {
+    @apply 
+        border-rose-300
+        bg-white
+}
+
+.inputBox input::placeholder {
+    @apply
+        text-slate-500
+}

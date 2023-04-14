@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.homeContainer {
+    @apply 
+        grid
+        
+        grid-cols-[2fr_8fr]
+        
+        bg-slate-100 
+        
+        shadow-md 
+        shadow-slate-100 
+        
+        rounded-xl 
+        
+        w-9/12 
+        min-w-[700px] 
+        h-3/4 
+        
+        text-xl font-[Roboto];
+}

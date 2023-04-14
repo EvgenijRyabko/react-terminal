@@ -1,0 +1,28 @@
+.head {
+    @apply
+        grid
+}
+
+.container {
+    @apply
+        grid
+        grid-cols-[3fr_7fr]
+
+        w-2/6
+        min-w-[300px]
+        
+        justify-self-center
+}
+
+.container p {
+    @apply
+        text-4xl font-[Roboto]
+        text-slate-700
+
+        mx-2
+}
+
+.container img {
+    @apply  
+        justify-self-end
+}

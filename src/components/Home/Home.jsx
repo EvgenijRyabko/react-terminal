@@ -1,11 +1,17 @@
 import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
+import Content from "./Content/Content";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import classes from './Home.module.css';
 
 const Home = () => {
     return (
-        <div>
+        <div className={classes.homeContainer}>
             <Sidebar />
-            <div>Content</div>
+            <Content />
+            <HelmetProvider>
+                <Helmet title="Главная"/>
+            </HelmetProvider>
         </div>
     )
 }
