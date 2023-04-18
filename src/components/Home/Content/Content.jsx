@@ -1,11 +1,18 @@
 import React from "react";
 import Afisha from "./Afisha/Afisha";
 
-const Content = () => {
+const Content = ({terminalId}) => {
     return (
-        <div>
-            <Afisha />
-        </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>File name</td>
+                        <td>Creation date</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <Afisha terminalId={terminalId} />
+            </table>
     )
 }
 

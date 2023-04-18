@@ -1,14 +1,21 @@
 import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import Content from "./Content/Content";
+import Upload from "./Upload/Upload";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import classes from './Home.module.css';
+import { useState } from "react";
 
 const Home = () => {
+    const [terminal, setTerminal] = useState();
+
     return (
         <div className={classes.homeContainer}>
             <Sidebar />
-            <Content />
+            <div>
+                <Upload setTerminal={setTerminal}/>
+                <Content terminalId={terminal}/>
+            </div>
             <HelmetProvider>
                 <Helmet title="Главная"/>
             </HelmetProvider>
