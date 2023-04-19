@@ -1,27 +1,51 @@
 import axios from "axios";
 import React from "react";
-import classes from './Upload.module.css';
+import { useEffect, useState } from "react";
+import classes from "./Upload.module.css";
 
-const getTerminals = async () => {
-    const res = await axios.get();
+const Upload = ({ setTerminal = (f) => f }) => {
+  const [terminals, setTerminals] = useState([]);
 
-    return res.data;
-}
+  useEffect(() => {
+    (async () => {
+      const res = await axios({
+        method: "get",
+        url: "http://localhost:8080/api/terminal/terminals/all",
+      });
 
-const Upload = ({setTerminal = (f) => f}) => {
-    return (
+      setTerminals(res.data);
+    })();
+  }, []);
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.uploadContainer}>
+        <select
+          name="terminals"
+          id="terminal-select"
+          onChange={(e) => setTerminal(e.target.value)}
+          className={classes.terminalSelect}
+        >
+          <option value={0}>- none -</option>
+          {terminals.map((el) => (
+            <option key={el.id} value={el.id}>
+              {el.name}
+            </option>
+          ))}
+        </select>
         <div>
-            <select name='terminals' id='terminal-select' onChange={(e) => setTerminal(e.target.value)} className={classes.terminalSelect}>
-                <option value={0}>- none -</option>
-                <option value={1}>Инфобокс ИПР</option>
-                <option value={2}>Инфобокс ФИЗВОСП</option>
-                <option value={3}>Инфобокс ИПП</option>
-                <option value={4}>Инфобокс ФФ</option>
-            </select>
-            <input type='file' className={classes.fileInput}/>
-            <button className={classes.uploadButton}>Upload</button>
+          <input
+            type="file"
+            multiple="multiple"
+            id="file"
+            className={`${classes.fileInput} focus:border-primary focus:shadow-te-primary dark:focus:border-primary`}
+          />
+          <label htmlFor="file" className={classes.inputLabel}></label>
         </div>
-    );
-}
+      </div>
+      <button className={classes.uploadButton}>Upload</button>
+    </div>
+  );
+};
 
 export default Upload;

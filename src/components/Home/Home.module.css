@@ -15,7 +15,7 @@
         
         w-9/12 
         min-w-[700px] 
-        h-3/4 
+        min-h-[75%]
         
         text-xl font-[Roboto];
 }
