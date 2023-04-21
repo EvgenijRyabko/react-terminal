@@ -9,13 +9,14 @@
         bg-slate-100 
         
         shadow-md 
-        shadow-slate-100 
+        shadow-slate-100
         
         rounded-xl 
         
         w-9/12 
-        min-w-[700px] 
-        min-h-[75%]
+        min-w-[750px]
+        min-h-[500px]
+        h-[75%]
         
         text-xl font-[Roboto];
 }

@@ -1,10 +1,12 @@
 import axios from "axios";
 import React from "react";
+import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import classes from "./Upload.module.css";
 
 const Upload = ({ setTerminal = (f) => f }) => {
   const [terminals, setTerminals] = useState([]);
+  const [uploadImages, setUploadImages] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -16,6 +18,12 @@ const Upload = ({ setTerminal = (f) => f }) => {
       setTerminals(res.data);
     })();
   }, []);
+
+  const upload = useCallback(() => {
+    console.log(uploadImages);
+  }, []);
+
+  upload();
 
   return (
     <div className={classes.container}>
@@ -38,6 +46,7 @@ const Upload = ({ setTerminal = (f) => f }) => {
             type="file"
             multiple="multiple"
             id="file"
+            onChange={(e) => {setUploadImages(e.target.files)}}
             className={`${classes.fileInput} focus:border-primary focus:shadow-te-primary dark:focus:border-primary`}
           />
           <label htmlFor="file" className={classes.inputLabel}></label>
