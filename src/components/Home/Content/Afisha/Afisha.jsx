@@ -31,7 +31,7 @@ const Afisha = ({terminalId}) => {
         });
 
         return res.data;
-    }, []);
+    }, [terminalId]);
 
     useEffect(() => {
         if (terminalId){
@@ -60,9 +60,9 @@ const Afisha = ({terminalId}) => {
                             <td>{formatDate(el.date_crt)}</td>
                             <td>
                                 <button 
-                                    className="rounded-[50%] w-[25px] h-[25px] bg-rose-600 text-slate-200 font-semibold"
+                                    className="rounded-[6px] w-[100px] h-[30px] bg-rose-600 text-white font-semibold"
                                     onClick={()=>{onDelete(el.id)}}>
-                                    X
+                                    Remove
                                 </button>
                             </td>
                         </tr>)

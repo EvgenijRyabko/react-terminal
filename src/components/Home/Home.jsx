@@ -13,7 +13,7 @@ const Home = () => {
         <div className={classes.homeContainer}>
             <Sidebar />
             <div>
-                <Upload setTerminal={setTerminal}/>
+                <Upload setTerminal={setTerminal} terminalId={terminal}/>
                 <Content terminalId={terminal}/>
             </div>
             <HelmetProvider>

@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import classes from "./Upload.module.css";
 
-const Upload = ({ setTerminal = (f) => f }) => {
+const Upload = ({ terminalId, setTerminal = (f) => f }) => {
   const [terminals, setTerminals] = useState([]);
   const [uploadImages, setUploadImages] = useState([]);
 
@@ -19,11 +19,29 @@ const Upload = ({ setTerminal = (f) => f }) => {
     })();
   }, []);
 
-  const upload = useCallback(() => {
-    console.log(uploadImages);
-  }, []);
+  const uploadFiles = useCallback(async (id) => {
+    try {
+      const formData = new FormData();
+      for (let i=0; i< uploadImages.length; i++) {
+        formData.append('file', uploadImages[i]);
+      }
 
-  upload();
+      console.log(uploadImages);
+      console.log(terminalId);
+
+      if (uploadImages) {
+        const res = await axios({
+          method: "post",
+          url: `http://localhost:8080/api/terminal/afisha/upload/${id}`,
+          data: formData
+        });
+
+        return res.data;
+      }
+    } catch (err) {
+      console.log(new Error(err).message);
+    }
+  }, [uploadImages, terminalId]);
 
   return (
     <div className={classes.container}>
@@ -46,13 +64,23 @@ const Upload = ({ setTerminal = (f) => f }) => {
             type="file"
             multiple="multiple"
             id="file"
-            onChange={(e) => {setUploadImages(e.target.files)}}
+            onChange={(e) => {
+              setUploadImages(e.target.files);
+            }}
             className={`${classes.fileInput} focus:border-primary focus:shadow-te-primary dark:focus:border-primary`}
           />
           <label htmlFor="file" className={classes.inputLabel}></label>
         </div>
       </div>
-      <button className={classes.uploadButton}>Upload</button>
+      <button
+        className={classes.uploadButton}
+        type='button'
+        onClick={() => {
+          uploadFiles(terminalId);
+        }}
+      >
+        Upload
+      </button>
     </div>
   );
 };
