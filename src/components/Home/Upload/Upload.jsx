@@ -26,9 +26,6 @@ const Upload = ({ terminalId, setTerminal = (f) => f }) => {
         formData.append('file', uploadImages[i]);
       }
 
-      console.log(uploadImages);
-      console.log(terminalId);
-
       if (uploadImages) {
         const res = await axios({
           method: "post",

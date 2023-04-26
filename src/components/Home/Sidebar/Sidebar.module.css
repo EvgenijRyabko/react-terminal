@@ -6,10 +6,9 @@
 
 .sidebarList {
     @apply
-        mx-4
         my-2
         
-        text-slate-200
+        text-slate-100
         text-2xl
         font-semibold
 }
@@ -17,6 +16,17 @@
 .sidebarList li {
     @apply
         my-8
+        py-4
+
+        min-h-[65px]
 
         text-center
+        items-center
+}
+
+.active {
+    @apply
+        bg-slate-100
+
+        text-amber-600
 }

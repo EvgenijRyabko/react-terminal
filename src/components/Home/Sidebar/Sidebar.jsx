@@ -7,7 +7,7 @@ const Sidebar = () => {
     return (
         <aside className={classes.sidebar}>
             <ul className={classes.sidebarList}>
-                <li>
+                <li className={classes.active}>
                     <NavLink to='/afishi'>Афишы</NavLink>
                 </li>
                 <li>

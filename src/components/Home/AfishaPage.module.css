@@ -1,0 +1,205 @@
+.container {
+    @apply 
+        grid
+
+        grid-cols-[8fr_2fr]
+
+        items-center
+}
+
+.uploadContainer {
+    @apply
+        grid
+
+        grid-rows-2
+}
+
+.uploadButton {
+    @apply
+        w-4/6
+        h-4/6
+        min-w-[110px]
+        min-h-[50px]
+
+        border-2
+        border-amber-500
+        rounded-[12px]
+
+        py-2
+        px-4
+
+        justify-self-center
+
+        mx-2
+
+        text-amber-500
+        text-2xl
+        font-semibold
+
+        opacity-100
+
+        transition duration-500
+}
+
+.uploadButton:hover {
+    @apply
+        bg-amber-500
+
+        text-white
+
+        transition duration-300
+}
+
+.uploadButton:active {
+    @apply
+        opacity-80
+
+        transition duration-75
+}
+
+.terminalSelect {
+    @apply
+        w-4/6
+        h-[40px]
+
+        m-4
+
+        min-h-[40px] 
+        
+        border-2
+        rounded-xl 
+
+        text-slate-600
+        
+        outline-none 
+        
+        bg-transparent 
+
+        justify-self-center
+}
+
+.uploadContainer div {
+    @apply
+        grid
+
+        items-center
+}
+
+.fileInput {
+    @apply
+        relative 
+        
+        m-0 
+        px-3 
+        py-[0.32rem]
+        
+        block 
+        
+        w-4/6 
+        min-w-0 
+
+        justify-self-center
+        
+        flex-auto 
+        
+        rounded 
+        border 
+        border-solid 
+        border-neutral-300 
+        
+        bg-clip-padding  
+        
+        text-base 
+        font-normal 
+        text-neutral-700 
+        
+        transition duration-300 
+        ease-in-out 
+        
+
+        file:-mx-3 
+        file:-my-[0.32rem] 
+        file:px-3 
+        file:py-[0.32rem] 
+
+        file:overflow-hidden 
+
+        file:rounded-none 
+        file:border-0 
+        file:border-solid 
+        file:border-inherit 
+
+        file:bg-neutral-100 
+
+        file:text-neutral-700
+
+        file:transition 
+        file:duration-150 
+        file:ease-in-out
+
+        file:[border-inline-end-width:1px] 
+        file:[margin-inline-end:0.75rem] 
+        
+        hover:file:bg-neutral-200  
+        focus:text-neutral-700  
+        focus:outline-none
+
+        dark:border-neutral-600 
+        dark:text-neutral-200 
+        dark:file:bg-neutral-700 
+        dark:file:text-neutral-100 
+}
+
+.inputLabel {
+    @apply
+    mb-2 inline-block text-neutral-700 dark:text-neutral-200
+}
+
+.contentTable {
+    @apply
+        min-w-full
+        
+        border-2
+        dark:border-neutral-500
+
+        text-center
+        text-xl 
+        text-slate-600
+        font-light 
+}
+
+.contentTable thead {
+    @apply
+        border-b
+        dark:border-neutral-500
+        
+        font-medium 
+}
+
+.contentTable th {
+    @apply
+        border-r
+        dark:border-neutral-500
+        
+        px-6 
+        py-4 
+}
+
+tbody tr {
+    @apply
+        border-b 
+        dark:border-neutral-500
+}
+
+tbody td {
+    @apply
+        whitespace-nowrap
+        
+        border-r
+        dark:border-neutral-500 
+        
+        px-6 
+        py-4 
+        
+        font-medium
+}
