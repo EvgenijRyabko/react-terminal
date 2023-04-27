@@ -3,6 +3,16 @@ import Home from "./Home/Home";
 import Login from "./Login/Login";
 import classes from "./App.module.css";
 
+// *Основные цели на данный момент
+
+// ? Компонент LoginForm
+// TODO: Реализация авторизации
+
+// ? Компонент AfishaPage
+// TODO: Реализовать пагинацию
+// TODO: Глянуть на масштабируемость страницы
+// TODO: Рефакторнуть и разбить на подкомпоненты
+
 const App = () => {
   return (
       <div className={classes.app}>

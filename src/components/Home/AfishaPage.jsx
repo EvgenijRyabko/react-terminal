@@ -1,35 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import classes from './AfishaPage.module.css';
+import classes from "./AfishaPage.module.css";
 
 const uploadFiles = async (id, uploadImages) => {
   try {
+    if (!id) throw "Terminal is not selected!";
+
+    if (uploadImages.length <= 0) throw "Nothing is selected to upload!";
+
     const formData = new FormData();
     for (let i = 0; i < uploadImages.length; i++) {
       formData.append("file", uploadImages[i]);
     }
 
-    if (uploadImages) {
-      const res = await axios({
-        method: "post",
-        url: `http://localhost:8080/api/terminal/afisha/upload/${id}`,
-        data: formData,
-      });
+    const res = await axios({
+      method: "post",
+      url: `http://localhost:8080/api/terminal/afisha/upload/${id}`,
+      data: formData,
+    });
 
-      return res.data;
-    }
+    return res.data;
   } catch (err) {
     console.log(new Error(err).message);
   }
 };
 
 const getAfishes = async (id) => {
-  const res = await axios({
-    method: "get",
-    url: `http://localhost:8080/api/terminal/afisha/getBy/${id}`,
-  });
+  try {
+    if (!id) throw "Terminal is not selected!";
 
-  return res.data;
+    const { data: result } = await axios({
+      method: "get",
+      url: `http://localhost:8080/api/terminal/afisha/getBy/${id}`,
+    });
+
+    return result.data;
+  } catch (err) {
+    console.log(new Error(err).message);
+  }
 };
 
 const getAllTerminals = async () => {
@@ -47,6 +55,8 @@ const getAllTerminals = async () => {
 
 const deleteAfisha = async (id) => {
   try {
+    if (!id) throw "Terminal is not selected!";
+
     const res = await axios({
       method: "delete",
       url: `http://localhost:8080/api/terminal/afisha/del/${id}`,
@@ -59,16 +69,18 @@ const deleteAfisha = async (id) => {
 };
 
 const formatDate = (date) => {
-  return new Date(date)
-    .toISOString()
-    .replace(/T/, " ") // replace T with a space
-    .replace(/\..+/, ""); // delete the dot and everything after
+  return new Date(date).toLocaleString("ru-RU").replace(",", "");
 };
 
+
+// *TODO: Рефакторнуть этот кусок говна и разбить его на отдельные компоненты
+// *TODO: Реализовать пагинацию
 const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
   const [terminals, setTerminals] = useState([]);
   const [uploadImages, setUploadImages] = useState([]);
   const [data, setData] = useState([]);
+
+  const inputRef = useRef();
 
   useEffect(() => {
     (async () => {
@@ -82,6 +94,8 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
     if (terminalId) {
       (async () => {
         const data = await getAfishes(terminalId);
+
+        console.log(data);
 
         setData(data);
       })();
@@ -100,6 +114,7 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
     await uploadFiles(terminalId, uploadImages);
 
     const data = await getAfishes(terminalId);
+    inputRef.current.value = '';
 
     setData(data);
   };
@@ -126,6 +141,7 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
               type="file"
               multiple="multiple"
               id="file"
+              ref={inputRef}
               onChange={(e) => {
                 setUploadImages(e.target.files);
               }}

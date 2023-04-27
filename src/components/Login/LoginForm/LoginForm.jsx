@@ -3,6 +3,8 @@ import InputAreas from "./InputAreas/InputAreas";
 import LoginHead from "./LoginHead/LoginHead";
 import classes from "./LoginForm.module.css";
 
+
+// *TODO: Реализовать авторизацию через куки. Спросить у Славика про защиту ссылок
 const LoginForm = ({signIn}) => {
   return (
     <form onSubmit={signIn} className={classes.loginForm}>
