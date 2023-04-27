@@ -72,7 +72,6 @@ const formatDate = (date) => {
   return new Date(date).toLocaleString("ru-RU").replace(",", "");
 };
 
-
 // *TODO: Рефакторнуть этот кусок говна и разбить его на отдельные компоненты
 // *TODO: Реализовать пагинацию
 const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
@@ -95,8 +94,6 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
       (async () => {
         const data = await getAfishes(terminalId);
 
-        console.log(data);
-
         setData(data);
       })();
     }
@@ -114,7 +111,7 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
     await uploadFiles(terminalId, uploadImages);
 
     const data = await getAfishes(terminalId);
-    inputRef.current.value = '';
+    inputRef.current.value = "";
 
     setData(data);
   };
@@ -189,6 +186,15 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
                       </td>
                     </tr>
                   ))}
+                  <tr>
+                    <td>
+                      <button>{"<-"}</button>
+                    </td>
+                    <td></td>
+                    <td>
+                      <button>{"->"}</button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
