@@ -203,3 +203,22 @@ tbody td {
         
         font-medium
 }
+
+.paginationRow {
+    @apply
+        h-2
+}
+
+.paginationRow td {
+    @apply
+        p-0
+        m-0
+}
+
+.paginationRow button {
+    @apply
+        w-full
+        h-8
+
+        font-semibold
+}

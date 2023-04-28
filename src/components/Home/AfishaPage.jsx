@@ -4,9 +4,9 @@ import classes from "./AfishaPage.module.css";
 
 const uploadFiles = async (id, uploadImages) => {
   try {
-    if (!id) throw "Terminal is not selected!";
+    if (!parseInt(id)) throw "Terminal is not selected!";
 
-    if (uploadImages.length <= 0) throw "Nothing is selected to upload!";
+    if (!uploadImages.length) throw "Nothing is selected to upload!";
 
     const formData = new FormData();
     for (let i = 0; i < uploadImages.length; i++) {
@@ -21,22 +21,22 @@ const uploadFiles = async (id, uploadImages) => {
 
     return res.data;
   } catch (err) {
-    console.log(new Error(err).message);
+    alert(err.response?.data.message || err);
   }
 };
 
-const getAfishes = async (id) => {
+const getAfishes = async (id, page = 1, limit = 5) => {
   try {
-    if (!id) throw "Terminal is not selected!";
+    if (!parseInt(id)) throw "Terminal is not selected!";
 
     const { data: result } = await axios({
       method: "get",
-      url: `http://localhost:8080/api/terminal/afisha/getBy/${id}`,
+      url: `http://localhost:8080/api/terminal/afisha/getBy/${id}?page=${page}&limit=${limit}`,
     });
 
-    return result.data;
+    return result;
   } catch (err) {
-    console.log(new Error(err).message);
+    alert(err.response?.data.message || err);
   }
 };
 
@@ -78,6 +78,9 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
   const [terminals, setTerminals] = useState([]);
   const [uploadImages, setUploadImages] = useState([]);
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(0);
+  const [nextPage, setNextPage] = useState(0);
+  const [previousPage, setPreviousPage] = useState(0);
 
   const inputRef = useRef();
 
@@ -92,9 +95,14 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
   useEffect(() => {
     if (terminalId) {
       (async () => {
-        const data = await getAfishes(terminalId);
+        const res = await getAfishes(terminalId);
 
-        setData(data);
+        console.log(res);
+
+        setData(res.data);
+        setPage(1);
+        setNextPage(res?.next?.page);
+        setPreviousPage(res?.previous?.page);
       })();
     }
   }, [terminalId]);
@@ -102,19 +110,54 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
   const onDelete = async (id) => {
     await deleteAfisha(id);
 
-    const data = await getAfishes(terminalId);
+    const res = await getAfishes(terminalId);
 
-    setData(data);
+    setData(res.data);
+    setNextPage(res.next.page);
+    setPreviousPage(res.previous.page);
   };
 
   const onUpload = async () => {
     await uploadFiles(terminalId, uploadImages);
 
-    const data = await getAfishes(terminalId);
+    const res = await getAfishes(terminalId);
     inputRef.current.value = "";
 
-    setData(data);
+    setData(res.data);
+    setNextPage(res.next.page);
+    setPreviousPage(res.previous.page);
   };
+
+  const onPrevious = async () => {
+    if (previousPage){
+      const res = await getAfishes(terminalId, previousPage);
+
+      console.log(res);
+
+      setData(res.data);
+      setPage(previousPage);
+      setNextPage(res?.next.page);
+      setPreviousPage(res?.previous.page);
+    }
+  }
+
+  const onNext = async () => {
+    if (nextPage) {
+      const res = await getAfishes(terminalId, nextPage);
+
+      console.log(res);
+
+      setData(res.data);
+      setPage(nextPage);
+      setNextPage(res?.next.page)
+      setPreviousPage(res?.previous.page);
+    }
+  }
+
+  console.log(`previous: ${previousPage}`);
+  console.log(`next: ${nextPage}`);
+  console.log(`current: ${page}`);
+
 
   return (
     <>
@@ -186,15 +229,23 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
                       </td>
                     </tr>
                   ))}
-                  <tr>
-                    <td>
-                      <button>{"<-"}</button>
-                    </td>
-                    <td></td>
-                    <td>
-                      <button>{"->"}</button>
-                    </td>
-                  </tr>
+                  {data.length ? (
+                    <tr className={classes.paginationRow}>
+                      <td>
+                        <button onClick={() => onPrevious()}>
+                          {previousPage?"<-":''}
+                        </button>
+                      </td>
+                      <td>{page}</td>
+                      <td>
+                        <button onClick={() => onNext()}>
+                          {nextPage?"->":''}
+                        </button>
+                      </td>
+                    </tr>
+                  ) : (
+                    <></>
+                  )}
                 </tbody>
               </table>
             </div>
