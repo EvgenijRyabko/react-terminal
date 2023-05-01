@@ -4,18 +4,18 @@ import classes from './Sidebar.module.css';
 
 const Sidebar = () => {
 
-    return (
-        <aside className={classes.sidebar}>
-            <ul className={classes.sidebarList}>
-                <li className={classes.active}>
-                    <NavLink to='/afishi'>Афишы</NavLink>
-                </li>
-                <li>
-                    <a href='/'>PDF</a>
-                </li>
-            </ul>
-        </aside>
-    )
+	return (
+		<aside className={classes.sidebar}>
+			<ul className={classes.sidebarList}>
+				<li className={classes.active}>
+					<NavLink to='/afishi'>Афиши</NavLink>
+				</li>
+				<li>
+					<a href='/'>PDF</a>
+				</li>
+			</ul>
+		</aside>
+	)
 }
 
 export default Sidebar;

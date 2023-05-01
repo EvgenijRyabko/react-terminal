@@ -1,32 +1,33 @@
 .sidebar {
-    @apply
-        bg-amber-600
+	@apply bg-amber-600
         rounded-[12px_0_0_12px]
+
+		  min-w-[150px]
+
+		  h-full
+		  w-full;
 }
 
 .sidebarList {
-    @apply
-        my-2
+	@apply my-2
         
         text-slate-100
         text-2xl
-        font-semibold
+        font-semibold;
 }
 
 .sidebarList li {
-    @apply
-        my-8
+	@apply my-8
         py-4
 
         min-h-[65px]
 
         text-center
-        items-center
+        items-center;
 }
 
 .active {
-    @apply
-        bg-slate-100
+	@apply bg-slate-100
 
-        text-amber-600
+        text-amber-600;
 }

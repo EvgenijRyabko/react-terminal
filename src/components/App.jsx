@@ -10,18 +10,18 @@ import classes from "./App.module.css";
 
 // ? Компонент AfishaPage
 // TODO: Реализовать пагинацию
-// TODO: Глянуть на масштабируемость страницы
+// ! Пагинация требует возврата всех данных с сервера
 // TODO: Рефакторнуть и разбить на подкомпоненты
 
 const App = () => {
-  return (
-      <div className={classes.app}>
-		    <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-        </Routes>
-      </div>
-  );
+	return (
+		<div className={classes.app}>
+			<Routes>
+				<Route path="/" element={<Login />} />
+				<Route path="/home" element={<Home />} />
+			</Routes>
+		</div>
+	);
 };
 
 export default App;

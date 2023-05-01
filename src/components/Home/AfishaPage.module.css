@@ -1,22 +1,21 @@
 .container {
-    @apply 
-        grid
+	@apply grid
 
         grid-cols-[8fr_2fr]
 
-        items-center
+		  py-4
+
+        items-center;
 }
 
 .uploadContainer {
-    @apply
-        grid
+	@apply grid
 
-        grid-rows-2
+        grid-rows-2;
 }
 
 .uploadButton {
-    @apply
-        w-4/6
+	@apply w-4/6
         h-4/6
         min-w-[110px]
         min-h-[50px]
@@ -38,28 +37,25 @@
 
         opacity-100
 
-        transition duration-500
+        transition duration-500;
 }
 
 .uploadButton:hover {
-    @apply
-        bg-amber-500
+	@apply bg-amber-500
 
         text-white
 
-        transition duration-300
+        transition duration-300;
 }
 
 .uploadButton:active {
-    @apply
-        opacity-80
+	@apply opacity-80
 
-        transition duration-75
+        transition duration-75;
 }
 
 .terminalSelect {
-    @apply
-        w-4/6
+	@apply w-4/6
         h-[40px]
 
         m-4
@@ -75,19 +71,17 @@
         
         bg-transparent 
 
-        justify-self-center
+        justify-self-center;
 }
 
 .uploadContainer div {
-    @apply
-        grid
+	@apply grid
 
-        items-center
+        items-center;
 }
 
 .fileInput {
-    @apply
-        relative 
+	@apply relative 
         
         m-0 
         px-3 
@@ -142,83 +136,65 @@
         
         hover:file:bg-neutral-200  
         focus:text-neutral-700  
-        focus:outline-none
-
-        dark:border-neutral-600 
-        dark:text-neutral-200 
-        dark:file:bg-neutral-700 
-        dark:file:text-neutral-100 
+        focus:outline-none;
 }
 
 .inputLabel {
-    @apply
-    mb-2 inline-block text-neutral-700 dark:text-neutral-200
+	@apply mb-2 
+		
+		inline-block 
+		text-neutral-700;
 }
 
 .contentTable {
-    @apply
-        min-w-full
+	@apply min-w-full
         
         border-2
-        dark:border-neutral-500
-
         text-center
         text-xl 
         text-slate-600
-        font-light 
+        font-light;
 }
 
 .contentTable thead {
-    @apply
-        border-b
-        dark:border-neutral-500
-        
-        font-medium 
+	@apply border-b
+		font-medium;
 }
 
 .contentTable th {
-    @apply
-        border-r
-        dark:border-neutral-500
+	@apply border-r
         
         px-6 
-        py-4 
+        py-4;
 }
 
 tbody tr {
-    @apply
-        border-b 
-        dark:border-neutral-500
+	@apply border-b;
 }
 
 tbody td {
-    @apply
-        whitespace-nowrap
+	@apply whitespace-nowrap
         
         border-r
-        dark:border-neutral-500 
         
         px-6 
         py-4 
         
-        font-medium
+        font-medium;
 }
 
 .paginationRow {
-    @apply
-        h-2
+	@apply h-2;
 }
 
 .paginationRow td {
-    @apply
-        p-0
-        m-0
+	@apply p-0
+        m-0;
 }
 
 .paginationRow button {
-    @apply
-        w-full
+	@apply w-full
         h-8
 
-        font-semibold
+        font-semibold;
 }
