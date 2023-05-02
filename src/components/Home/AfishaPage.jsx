@@ -205,8 +205,10 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
       {
         total>1
         ?<ReactPaginate
-        className="flex w-full justify-around p-4 text-slate-600 font-semibold"
-        pageClassName="font-semibold"
+        className="flex w-full justify-end p-4 text-slate-600 font-semibold"
+        pageClassName="font-semibold px-2"
+        nextClassName="px-4"
+        previousClassName="px-4"
         activeClassName="text-amber-600 font-bold"
         onPageChange={(e) => setPage(e.selected+1)}
 				pageCount={total}
