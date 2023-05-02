@@ -80,8 +80,8 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
 	const [uploadImages, setUploadImages] = useState([]);
 	const [data, setData] = useState([]);
 
-	const [page, setPage] = useState();
-	const [perPage, setPerPage] = useState();
+	const [page, setPage] = useState(1);
+	const [total, setTotal] = useState();
 
 	const inputRef = useRef();
 
@@ -96,22 +96,25 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
 	useEffect(() => {
 		if (parseInt(terminalId)) {
 			(async () => {
-				const res = await getAfishes(parseInt(terminalId));
+				const res = await getAfishes(parseInt(terminalId), page);
 
 				setPage(res.paginate.currentPage);
-				setPerPage(res.paginate.perPage);
+				setTotal(res.paginate.lastPage);
 
 				setData(res.data);
 			})();
 		} else {
 			setData([]);
 		}
-	}, [terminalId]);
+	}, [terminalId, page]);
 
 	const onDelete = async (id) => {
 		await deleteAfisha(id);
 
 		const res = await getAfishes(terminalId);
+
+    setPage(res.paginate.currentPage);
+		setTotal(res.paginate.lastPage);
 
 		setData(res.data);
 	};
@@ -122,26 +125,11 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
 		const res = await getAfishes(terminalId);
 		inputRef.current.value = "";
 
+    setPage(res.paginate.currentPage);
+		setTotal(res.paginate.lastPage);
+
 		setData(res.data);
 	};
-
-	const onPrevious = async () => {
-		const res = await getAfishes(terminalId, page - 1, perPage);
-
-		setPage(res.paginate.currentPage);
-		setPerPage(res.paginate.perPage);
-
-		setData(res.data);
-	}
-
-	const onNext = async () => {
-		const res = await getAfishes(terminalId, page + 1, perPage);
-
-		setPage(res.paginate.currentPage);
-		setPerPage(res.paginate.perPage);
-
-		setData(res.data);
-	}
 
 	return (
 		<>
@@ -164,6 +152,7 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
 						<input
 							type="file"
 							multiple="multiple"
+              accept=".jpg, .jpeg, .png"
 							id="file"
 							ref={inputRef}
 							onChange={(e) => {
@@ -196,7 +185,7 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
 					<tbody>
 						{data.map((el) => (
 							<tr key={el.id}>
-								<td>{el.path_url}</td>
+								<td><a href={`uploadFiles/${terminalId}/${el.path_url}`}>{el.path_url}</a></td>
 								<td>{formatDate(el.date_crt)}</td>
 								<td>
 									<button
@@ -213,9 +202,22 @@ const AfishaPage = ({ terminalId, setTerminal = (f) => f }) => {
 					</tbody>
 				</table>
 			</div>
-			<ReactPaginate
-				pageCount={10}
+      {
+        total>1
+        ?<ReactPaginate
+        className="flex w-full justify-around p-4 text-slate-600 font-semibold"
+        pageClassName="font-semibold"
+        activeClassName="text-amber-600 font-bold"
+        onPageChange={(e) => setPage(e.selected+1)}
+				pageCount={total}
+        breakLabel="..."
+        nextLabel=">"
+        pageRangeDisplayed={3}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
 			/>
+      :<></>
+      }
 		</>
 	);
 };
