@@ -1,44 +1,45 @@
-import axios from "axios";
-import React from "react";
-import { useCallback } from "react";
-import { useEffect, useState } from "react";
-import classes from "./Upload.module.css";
+import axios from 'axios';
+import React, { useCallback, useEffect, useState } from 'react';
+import classes from './Upload.module.css';
 
-const Upload = ({ terminalId, setTerminal = (f) => f }) => {
+function Upload({ terminalId, setTerminal = (f) => f }) {
   const [terminals, setTerminals] = useState([]);
   const [uploadImages, setUploadImages] = useState([]);
 
   useEffect(() => {
     (async () => {
       const res = await axios({
-        method: "get",
-        url: "http://localhost:8080/api/terminal/terminals/all",
+        method: 'get',
+        url: 'http://localhost:8080/api/terminal/terminals/all',
       });
 
       setTerminals(res.data);
     })();
   }, []);
 
-  const uploadFiles = useCallback(async (id) => {
-    try {
-      const formData = new FormData();
-      for (let i=0; i< uploadImages.length; i++) {
-        formData.append('file', uploadImages[i]);
-      }
+  const uploadFiles = useCallback(
+    async (id) => {
+      try {
+        const formData = new FormData();
+        for (let i = 0; i < uploadImages.length; i++) {
+          formData.append('file', uploadImages[i]);
+        }
 
-      if (uploadImages) {
-        const res = await axios({
-          method: "post",
-          url: `http://localhost:8080/api/terminal/afisha/upload/${id}`,
-          data: formData
-        });
+        if (uploadImages) {
+          const res = await axios({
+            method: 'post',
+            url: `http://localhost:8080/api/terminal/afisha/upload/${id}`,
+            data: formData,
+          });
 
-        return res.data;
+          return res.data;
+        }
+      } catch (err) {
+        console.log(new Error(err).message);
       }
-    } catch (err) {
-      console.log(new Error(err).message);
-    }
-  }, [uploadImages, terminalId]);
+    },
+    [uploadImages, terminalId],
+  );
 
   return (
     <div className={classes.container}>
@@ -66,12 +67,12 @@ const Upload = ({ terminalId, setTerminal = (f) => f }) => {
             }}
             className={`${classes.fileInput} focus:border-primary focus:shadow-te-primary dark:focus:border-primary`}
           />
-          <label htmlFor="file" className={classes.inputLabel}></label>
+          <label htmlFor="file" className={classes.inputLabel} />
         </div>
       </div>
       <button
         className={classes.uploadButton}
-        type='button'
+        type="button"
         onClick={() => {
           uploadFiles(terminalId);
         }}
@@ -80,6 +81,6 @@ const Upload = ({ terminalId, setTerminal = (f) => f }) => {
       </button>
     </div>
   );
-};
+}
 
 export default Upload;

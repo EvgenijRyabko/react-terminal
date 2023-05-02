@@ -34,6 +34,7 @@ module.exports = {
     'vars-on-top': 0,
     'no-var': 0,
     'import/no-named-as-default': 0,
+    'import/no-extraneous-dependencies': 0,
     'no-param-reassign': ['error', { props: false }],
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'jsx-a11y/click-events-have-key-events': 0,

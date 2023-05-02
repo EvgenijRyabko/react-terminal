@@ -72,7 +72,6 @@ const deleteAfisha = async (id) => {
 const formatDate = (date) => new Date(date).toLocaleString('ru-RU').replace(',', '');
 
 // *TODO: Рефакторнуть этот кусок говна и разбить его на отдельные компоненты
-// *TODO: Реализовать пагинацию
 function AfishaPage({ terminalId, setTerminal = (f) => f }) {
   const [terminals, setTerminals] = useState([]);
   const [uploadImages, setUploadImages] = useState([]);

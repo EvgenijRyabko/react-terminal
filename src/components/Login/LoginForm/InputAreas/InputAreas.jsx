@@ -1,7 +1,7 @@
-import React from "react";
-import classes from "./InputAreas.module.css";
+import React from 'react';
+import classes from './InputAreas.module.css';
 
-const InputAreas = () => {
+function InputAreas() {
   return (
     <div className={classes.inputsSection}>
       <div className={classes.inputContainer}>
@@ -10,9 +10,9 @@ const InputAreas = () => {
             name="login"
             type="text"
             className="peer"
-            required={true}
+            required
             minLength={4}
-            placeholder='Login'
+            placeholder="Login"
           />
         </div>
       </div>
@@ -22,14 +22,14 @@ const InputAreas = () => {
             name="password"
             type="password"
             className="peer"
-            required={true}
+            required
             minLength={4}
-            placeholder='Password'
+            placeholder="Password"
           />
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default InputAreas;

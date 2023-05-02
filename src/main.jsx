@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import App from './components/App';
 import './style.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -10,11 +10,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 
 root.render(
-	<BrowserRouter>
-		<React.StrictMode>
-			<QueryClientProvider client={queryClient}>
-				<App />
-			</QueryClientProvider>
-		</React.StrictMode>
-	</BrowserRouter>
-)
+  <BrowserRouter>
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </React.StrictMode>
+  </BrowserRouter>,
+);
