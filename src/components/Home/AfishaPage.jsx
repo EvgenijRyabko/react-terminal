@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import classes from './AfishaPage.module.css';
 import formatDate from '../../utils/formatDate';
+import validateFiles from '../../utils/validateFiles';
 
 const uploadFiles = async (id, uploadImages) => {
   try {
@@ -10,9 +11,14 @@ const uploadFiles = async (id, uploadImages) => {
 
     if (!uploadImages.length) throw 'Nothing is selected to upload!';
 
+    const validationRes = validateFiles(uploadImages);
+
+    if (validationRes.failed.length)
+      alert(`Files: ${validationRes.failed.join(', ')} failed validation`);
+
     const formData = new FormData();
-    for (let i = 0; i < uploadImages.length; i++) {
-      formData.append('file', uploadImages[i]);
+    for (let i = 0; i < validationRes.validated.length; i++) {
+      formData.append('file', validationRes.validated[i]);
     }
 
     const res = await axios({

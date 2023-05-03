@@ -173,7 +173,7 @@ tbody tr {
 }
 
 tbody td {
-	@apply whitespace-nowrap
+	@apply 
         
         border-r
         
