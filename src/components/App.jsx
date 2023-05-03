@@ -1,4 +1,5 @@
-import React, { Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Home from './Home/Home';
 import Login from './Login/Login';
 import classes from './App.module.css';

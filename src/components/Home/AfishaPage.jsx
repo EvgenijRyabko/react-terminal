@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import classes from './AfishaPage.module.css';
+import formatDate from '../../utils/formatDate';
 
 const uploadFiles = async (id, uploadImages) => {
   try {
@@ -68,8 +69,6 @@ const deleteAfisha = async (id) => {
     console.log(new Error(e).message);
   }
 };
-
-const formatDate = (date) => new Date(date).toLocaleString('ru-RU').replace(',', '');
 
 // *TODO: Рефакторнуть этот кусок говна и разбить его на отдельные компоненты
 function AfishaPage({ terminalId, setTerminal = (f) => f }) {
