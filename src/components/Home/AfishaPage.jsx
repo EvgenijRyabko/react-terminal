@@ -16,14 +16,14 @@ const uploadFiles = async (id, uploadImages) => {
 
     if (validationRes.failed.length) {
       let errorHtml = '<div class="max-h-[200px] w-full">';
-      errorHtml += '<table class="border-2 border-slate-200 min-w-full overflow-auto">';
+      errorHtml += '<table class="border-2 border-slate-200 min-w-full break-all overflow-y-auto">';
       errorHtml += '<thead class="border-b font-medium">';
       errorHtml += '<tr><th>File</th><th>Error</th></tr></thead><tbody>';
 
       for (let i = 0; i < validationRes.failed.length; i++) {
         const { file, error } = validationRes.failed[i];
 
-        errorHtml += `<tr class="border-b"><td>${file}</td><td>${error}</td></tr>`;
+        errorHtml += `<tr class="border-b"><td>${file}</td><td class="min-w-[100px]">${error}</td></tr>`;
       }
 
       errorHtml += '</tbody></table></div>';
@@ -197,7 +197,7 @@ function AfishaPage({ terminalId, setTerminal = (f) => f }) {
           Upload
         </button>
       </div>
-      <div className="px-2 min-w-full overflow-x-auto">
+      <div className="px-2 min-w-full">
         <table className={classes.contentTable}>
           <thead>
             <tr>
