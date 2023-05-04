@@ -148,6 +148,8 @@
 
 .contentTable {
 	@apply min-w-full
+
+        break-words
         
         border-2
         text-center

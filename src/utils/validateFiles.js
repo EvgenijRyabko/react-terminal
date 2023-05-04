@@ -1,17 +1,13 @@
 export default (files) => {
   const validated = [];
   const failed = [];
+  const regExp = /[а-яё\s-]+/i;
 
-  for (const file in files) {
-    if (Object.hasOwn(files, file)) {
-      if (file.size < 10 * 1048576) validated.push(file);
-      else failed.push(file.name);
-
-      validated.map((el) => ({
-        ...el,
-        name: el.name.replace(/[^A-Za-z0-9\s!?]/g, ''),
-      }));
-    }
+  for (let i = 0; i < files.length; i++) {
+    if (files[i].size < 10 * 1048576) {
+      if (!regExp.test(files[i].name)) validated.push(files[i]);
+      else failed.push({ file: files[i].name, error: 'wrong name' });
+    } else failed.push({ file: files[i].name, error: 'exceeded size' });
   }
 
   return { validated, failed };

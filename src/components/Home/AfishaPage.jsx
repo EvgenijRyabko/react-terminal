@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
+import Swal from 'sweetalert2';
 import classes from './AfishaPage.module.css';
 import formatDate from '../../utils/formatDate';
 import validateFiles from '../../utils/validateFiles';
@@ -13,23 +14,42 @@ const uploadFiles = async (id, uploadImages) => {
 
     const validationRes = validateFiles(uploadImages);
 
-    if (validationRes.failed.length)
-      alert(`Files: ${validationRes.failed.join(', ')} failed validation`);
+    if (validationRes.failed.length) {
+      let errorHtml = '<div class="max-h-[200px] w-full">';
+      errorHtml += '<table class="border-2 border-slate-200 min-w-full overflow-auto">';
+      errorHtml += '<thead class="border-b font-medium">';
+      errorHtml += '<tr><th>File</th><th>Error</th></tr></thead><tbody>';
 
-    const formData = new FormData();
-    for (let i = 0; i < validationRes.validated.length; i++) {
-      formData.append('file', validationRes.validated[i]);
+      for (let i = 0; i < validationRes.failed.length; i++) {
+        const { file, error } = validationRes.failed[i];
+
+        errorHtml += `<tr class="border-b"><td>${file}</td><td>${error}</td></tr>`;
+      }
+
+      errorHtml += '</tbody></table></div>';
+
+      Swal.fire({
+        html: errorHtml,
+        icon: 'error',
+      });
     }
 
-    const res = await axios({
-      method: 'post',
-      url: `http://localhost:8080/api/terminal/afisha/upload/${id}`,
-      data: formData,
-    });
+    if (validationRes.validated.length) {
+      const formData = new FormData();
+      for (let i = 0; i < validationRes.validated.length; i++) {
+        formData.append('file', validationRes.validated[i]);
+      }
 
-    return res.data;
+      const res = await axios({
+        method: 'post',
+        url: `http://localhost:8080/api/terminal/afisha/upload/${id}`,
+        data: formData,
+      });
+
+      return res.data;
+    }
   } catch (err) {
-    alert(err.response?.data.message || err);
+    Swal.fire('Error', err.response?.data.message || err, 'error');
   }
 };
 
@@ -44,7 +64,7 @@ const getAfishes = async (id, page = 1, perPage = 5) => {
 
     return res;
   } catch (err) {
-    alert(err.response?.data.message || err);
+    Swal.fire('Error', err.response?.data.message || err, 'error');
   }
 };
 
@@ -56,8 +76,8 @@ const getAllTerminals = async () => {
     });
 
     return res.data;
-  } catch (error) {
-    console.log(new Error(error).message);
+  } catch (err) {
+    Swal.fire('Error', err.response?.data.message || err, 'error');
   }
 };
 
@@ -71,8 +91,8 @@ const deleteAfisha = async (id) => {
     });
 
     return res.data;
-  } catch (e) {
-    console.log(new Error(e).message);
+  } catch (err) {
+    Swal.fire('Error', err.response?.data.message || err, 'error');
   }
 };
 
@@ -96,9 +116,9 @@ function AfishaPage({ terminalId, setTerminal = (f) => f }) {
   }, []);
 
   useEffect(() => {
-    if (parseInt(terminalId)) {
+    if (terminalId) {
       (async () => {
-        const res = await getAfishes(parseInt(terminalId), page);
+        const res = await getAfishes(terminalId, page);
 
         setPage(res.paginate.currentPage);
         setTotal(res.paginate.lastPage);
@@ -106,6 +126,8 @@ function AfishaPage({ terminalId, setTerminal = (f) => f }) {
         setData(res.data);
       })();
     } else {
+      setPage(0);
+      setTotal(0);
       setData([]);
     }
   }, [terminalId, page]);
@@ -140,7 +162,7 @@ function AfishaPage({ terminalId, setTerminal = (f) => f }) {
           <select
             name="terminals"
             id="terminal-select"
-            onChange={(e) => setTerminal(e.target.value)}
+            onChange={(e) => setTerminal(parseInt(e.target.value))}
             className={classes.terminalSelect}
           >
             <option value={false}>- none -</option>
