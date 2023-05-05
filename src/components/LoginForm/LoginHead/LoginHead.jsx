@@ -1,5 +1,5 @@
 import React from 'react';
-import authLogo from '../../../../assets/authLogo.svg';
+import authLogo from '../../../assets/authLogo.svg';
 import classes from './LoginHead.module.css';
 
 function LoginHead() {

@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import Swal from 'sweetalert2';
-import classes from './AfishaPage.module.css';
+import ContentTable from '../ContentTable/ContentTable';
+import classes from './Afisha.module.css';
 import formatDate from '../../utils/formatDate';
 import validateFiles from '../../utils/validateFiles';
 
@@ -197,38 +198,12 @@ function AfishaPage({ terminalId, setTerminal = (f) => f }) {
           Upload
         </button>
       </div>
-      <div className="px-2 min-w-full">
-        <table className={classes.contentTable}>
-          <thead>
-            <tr>
-              <th>File name</th>
-              <th>Creation date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((el) => (
-              <tr key={el.id}>
-                <td>
-                  <a href={`uploadFiles/${terminalId}/${el.path_url}`}>{el.path_url}</a>
-                </td>
-                <td>{formatDate(el.date_crt)}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="rounded-[6px] w-[100px] h-[30px] bg-rose-600 text-white font-semibold"
-                    onClick={() => {
-                      onDelete(el.id);
-                    }}
-                  >
-                    Remove
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ContentTable
+        headers={['File name', 'Creation date']}
+        dataArray={data.map((el) => ({ ...el, date_crt: formatDate(el.date_crt) }))}
+        keys={['path_url', 'date_crt']}
+        deleteHandler={onDelete}
+      />
       {total > 1 ? (
         <ReactPaginate
           className="flex w-full justify-end p-4 text-slate-600 font-semibold"

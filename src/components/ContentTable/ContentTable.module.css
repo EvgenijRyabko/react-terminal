@@ -1,0 +1,38 @@
+.contentTable {
+	@apply min-w-full
+
+        break-all
+        
+        border-2
+        text-center
+        text-xl 
+        text-slate-600
+        font-light;
+}
+
+.contentTable thead {
+	@apply border-b
+		font-medium;
+}
+
+.contentTable th {
+	@apply border-r
+        
+        px-6 
+        py-4;
+}
+
+tbody tr {
+	@apply border-b;
+}
+
+tbody td {
+	@apply 
+        
+        border-r
+        
+        px-6 
+        py-4 
+        
+        font-medium;
+}

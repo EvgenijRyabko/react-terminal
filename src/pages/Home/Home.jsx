@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import Sidebar from './Sidebar/Sidebar';
-import AfishaPage from './AfishaPage';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import AfishaPage from '../../components/Afisha/Afisha';
 import classes from './Home.module.css';
 
 function Home() {

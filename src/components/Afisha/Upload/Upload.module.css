@@ -1,22 +1,21 @@
 .container {
-    @apply 
-        grid
+	@apply grid
 
         grid-cols-[8fr_2fr]
 
-        items-center
+		  py-4
+
+        items-center;
 }
 
 .uploadContainer {
-    @apply
-        grid
+	@apply grid
 
-        grid-rows-2
+        grid-rows-2;
 }
 
 .uploadButton {
-    @apply
-        w-4/6
+	@apply w-4/6
         h-4/6
         min-w-[110px]
         min-h-[50px]
@@ -38,28 +37,25 @@
 
         opacity-100
 
-        transition duration-500
+        transition duration-500;
 }
 
 .uploadButton:hover {
-    @apply
-        bg-amber-500
+	@apply bg-amber-500
 
         text-white
 
-        transition duration-300
+        transition duration-300;
 }
 
 .uploadButton:active {
-    @apply
-        opacity-80
+	@apply opacity-80
 
-        transition duration-75
+        transition duration-75;
 }
 
 .terminalSelect {
-    @apply
-        w-4/6
+	@apply w-4/6
         h-[40px]
 
         m-4
@@ -75,19 +71,17 @@
         
         bg-transparent 
 
-        justify-self-center
+        justify-self-center;
 }
 
 .uploadContainer div {
-    @apply
-        grid
+	@apply grid
 
-        items-center
+        items-center;
 }
 
 .fileInput {
-    @apply
-        relative 
+	@apply relative 
         
         m-0 
         px-3 
@@ -142,15 +136,12 @@
         
         hover:file:bg-neutral-200  
         focus:text-neutral-700  
-        focus:outline-none
-
-        dark:border-neutral-600 
-        dark:text-neutral-200 
-        dark:file:bg-neutral-700 
-        dark:file:text-neutral-100 
+        focus:outline-none;
 }
 
 .inputLabel {
-    @apply
-    mb-2 inline-block text-neutral-700 dark:text-neutral-200
+	@apply mb-2 
+		
+		inline-block 
+		text-neutral-700;
 }

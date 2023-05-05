@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import LoginForm from './LoginForm/LoginForm';
-import classes from './Login.module.css';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import classes from '../../components/LoginForm/LoginForm.module.css';
 
 function Login() {
   const navigation = useNavigate();
