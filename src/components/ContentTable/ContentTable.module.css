@@ -27,9 +27,7 @@ tbody tr {
 }
 
 tbody td {
-	@apply 
-        
-        border-r
+	@apply border-r
         
         px-6 
         py-4 

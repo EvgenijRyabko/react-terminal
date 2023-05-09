@@ -29,14 +29,16 @@
         items-center 
         justify-items-center
 
+		  min-h-[20%]
         w-full;
 }
 
 .buttonContainer button {
-	@apply w-1/4 
-        h-[40px] 
+	@apply w-1/4
+        min-h-full
         
-        text-slate-100 
+        text-slate-100
+		  text-[calc(18px+0.5vw)] 
         
         bg-amber-500 rounded-md 
         

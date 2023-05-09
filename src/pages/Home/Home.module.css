@@ -14,10 +14,10 @@
 
 	place-self-center
         
-        w-9/12
+        w-5/6
 	/* h-5/6 */
         min-w-[750px]
-        min-h-[500px]
+        min-h-screen
         
         text-xl font-[Roboto];
 }

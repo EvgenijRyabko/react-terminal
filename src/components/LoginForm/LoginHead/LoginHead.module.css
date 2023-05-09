@@ -1,28 +1,31 @@
 .head {
-    @apply
-        grid
+	@apply grid
+	
+	min-h-[15%];
 }
 
 .container {
-    @apply
-        grid
+	@apply grid
         grid-cols-[3fr_7fr]
 
         w-2/6
         min-w-[300px]
         
-        justify-self-center
+        justify-self-center;
 }
 
 .container p {
-    @apply
-        text-4xl font-[Roboto]
+	@apply grid
+		  font-[Roboto]
         text-slate-700
+		  text-[calc(24px+1vw)]
 
-        mx-2
+		  items-center
+
+        mx-2;
 }
 
 .container img {
-    @apply  
-        justify-self-end
+	@apply justify-self-end
+		  min-h-full;
 }

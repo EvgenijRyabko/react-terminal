@@ -4,13 +4,15 @@ import LoginHead from './LoginHead/LoginHead';
 import classes from './LoginForm.module.css';
 
 // *TODO: Реализовать авторизацию через куки. Спросить у Славика про защиту ссылок
-function LoginForm({ signIn }) {
+function LoginForm({ signIn = (f) => f, setLogin = (f) => f, setPassword = (f) => f }) {
   return (
-    <form onSubmit={signIn} className={classes.loginForm}>
+    <form className={classes.loginForm}>
       <LoginHead />
-      <InputAreas />
+      <InputAreas setPassword={setPassword} setLogin={setLogin} />
       <div className={classes.buttonContainer}>
-        <button type="submit">Sign in</button>
+        <button type="button" onClick={(e) => signIn(e)}>
+          Sign in
+        </button>
       </div>
     </form>
   );

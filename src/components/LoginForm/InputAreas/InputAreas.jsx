@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './InputAreas.module.css';
 
-function InputAreas() {
+function InputAreas({ setLogin = (f) => f, setPassword = (f) => f }) {
   return (
     <div className={classes.inputsSection}>
       <div className={classes.inputContainer}>
@@ -13,6 +13,7 @@ function InputAreas() {
             required
             minLength={4}
             placeholder="Login"
+            onChange={(e) => setLogin(e.target.value)}
           />
         </div>
       </div>
@@ -25,6 +26,7 @@ function InputAreas() {
             required
             minLength={4}
             placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
       </div>

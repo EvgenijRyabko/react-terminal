@@ -1,39 +1,41 @@
 .inputsSection {
-    @apply 
-        grid 
-        
-        content-end 
-        row-auto 
-        gap-y-12
+	@apply grid 
+
+			min-h-full
+        row-auto;
 }
 
 .inputContainer {
-    @apply 
-        grid 
+	@apply grid 
         
-        w-full 
-        
-        justify-items-center
+        w-full
+		  min-h-full 
+
+		  items-center
+        justify-items-center;
 }
 
 .inputBox {
-    @apply 
-        relative 
+	@apply grid
+		  relative 
+
+		  my-10
         
-        w-3/6 
+		  min-h-[40%]
+        w-3/6;
 }
 
 .inputBox input {
-    @apply 
-        px-2 
+	@apply px-2 
         
         w-full 
-        min-h-[40px] 
+        min-h-full
         
         border-2
         rounded-xl 
 
         text-slate-600
+		  text-[calc(18px+0.5vw)]
         
         outline-none 
         
@@ -42,21 +44,18 @@
         focus:bg-white 
         focus:border-blue-600
         
-        transform duration-500
+        transform duration-500;
 }
 
 .inputBox input:valid {
-    @apply 
-        bg-white
+	@apply bg-white;
 }
 
 .inputBox input:invalid:not(:placeholder-shown) {
-    @apply 
-        border-rose-300
-        bg-white
+	@apply border-rose-300
+        bg-white;
 }
 
 .inputBox input::placeholder {
-    @apply
-        text-slate-500
+	@apply text-slate-500;
 }

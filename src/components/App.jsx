@@ -9,9 +9,6 @@ import classes from './App.module.css';
 // ? Компонент LoginForm
 // TODO: Реализация авторизации
 
-// ? Компонент AfishaPage
-// TODO: Рефакторнуть и разбить на подкомпоненты
-
 function App() {
   return (
     <div className={classes.app}>
