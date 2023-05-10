@@ -50,7 +50,7 @@ const uploadFiles = async (id, uploadImages) => {
       return res.data;
     }
   } catch (err) {
-    Swal.fire('Error', err.response?.data.message || err, 'error');
+    Swal.fire('Error', err?.response?.data.message || err, 'error');
   }
 };
 
@@ -65,7 +65,7 @@ const getAfishes = async (id, page = 1, perPage = 5) => {
 
     return res;
   } catch (err) {
-    Swal.fire('Error', err.response?.data.message || err, 'error');
+    Swal.fire('Error', err?.response?.data.message || err, 'error');
   }
 };
 
@@ -78,7 +78,7 @@ const getAllTerminals = async () => {
 
     return res.data;
   } catch (err) {
-    Swal.fire('Error', err.response?.data.message || err, 'error');
+    Swal.fire('Error', err?.response?.data.message || err, 'error');
   }
 };
 
@@ -93,7 +93,7 @@ const deleteAfisha = async (id) => {
 
     return res.data;
   } catch (err) {
-    Swal.fire('Error', err.response?.data.message || err, 'error');
+    Swal.fire('Error', err?.response?.data.message || err, 'error');
   }
 };
 

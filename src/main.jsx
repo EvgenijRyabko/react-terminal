@@ -1,20 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import App from './components/App';
+import { CookiesProvider } from 'react-cookie';
+import './middlewares/axiosInterceptors';
+import Router from './router/Router';
 import './style.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const queryClient = new QueryClient();
-
 root.render(
-  <BrowserRouter>
+  <CookiesProvider>
     <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
+      <Router />
     </React.StrictMode>
-  </BrowserRouter>,
+  </CookiesProvider>,
 );

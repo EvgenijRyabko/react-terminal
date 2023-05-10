@@ -12,7 +12,6 @@ import classes from '../../components/LoginForm/LoginForm.module.css';
 const signIn = async (payload) => {
   try {
     const response = await axios.post('http://localhost:8080/api/auth', payload);
-    console.log(response);
     return response.data;
   } catch (e) {
     Swal.fire('Error', e?.response?.data.error || 'Произошла непредвиденная ошибка', 'error');
@@ -26,6 +25,7 @@ function Login() {
   const navigate = useNavigate();
 
   const cookies = ['auth-token', 'selected-tab'];
+  const idModule = 2;
 
   const [, setCookie, removeCookie] = useCookies(cookies);
 
@@ -35,7 +35,7 @@ function Login() {
     // If length bytes > 32 then trim to 32
     if (iv.length > 32) iv = iv.slice(0, 32);
 
-    const AesKey = CryptoJS.enc.Utf8.parse(import.meta.env.REACT_APP_API_KEY);
+    const AesKey = CryptoJS.enc.Utf8.parse(import.meta.env.VITE_APP_API_KEY);
     const byteIv = CryptoJS.enc.Hex.parse(iv);
     const encryptedStringHex = CryptoJS.AES.encrypt(pass, AesKey, {
       iv: byteIv,
@@ -53,9 +53,11 @@ function Login() {
     e.preventDefault();
 
     // Get data from server
-    const {
-      payload: { auth_token: token, grants, firstname, name, views, id_person: idPerson },
-    } = await signIn({ password: encryptPass(password), login });
+    const { auth_token: token, id_person: idPerson } = await signIn({
+      password: encryptPass(password),
+      login,
+      id_module: idModule,
+    });
 
     // If auth success then redirect to main page
     if (token) {

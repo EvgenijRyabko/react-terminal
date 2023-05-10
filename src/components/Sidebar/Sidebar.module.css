@@ -1,5 +1,8 @@
 .sidebar {
-	@apply bg-amber-600
+	@apply 
+        grid
+
+        bg-amber-600
         rounded-[12px_0_0_12px]
 
 		  min-w-[150px]
@@ -30,4 +33,18 @@
 	@apply bg-slate-100
 
         text-amber-600;
+}
+
+.exitImg {
+        @apply
+        grid
+
+        w-full
+}
+
+.exitImg button {
+        @apply
+
+        place-self-center
+        w-[25%]
 }
