@@ -1,10 +1,11 @@
 import React from 'react';
-import { useCookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
 import { Navigate } from 'react-router-dom';
 
 function LoginRoute({ children }) {
-  const [token] = useCookies(['auth-token']);
-  if (token['auth-token']) return <Navigate to="/home" />;
+  const cookies = new Cookies();
+  const token = cookies.get('auth-token');
+  if (token) return <Navigate to="/home" />;
   return children;
 }
 

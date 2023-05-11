@@ -1,4 +1,5 @@
 import React from 'react';
+import trashIcon from '../../assets/trashIcon.svg';
 import classes from './ContentTable.module.css';
 
 function ContentTable({ headers, dataArray, keys, deleteHandler = (f) => f }) {
@@ -24,12 +25,16 @@ function ContentTable({ headers, dataArray, keys, deleteHandler = (f) => f }) {
               <td>
                 <button
                   type="button"
-                  className="rounded-[6px] min-w-[100px] h-[30px] bg-rose-600 text-white font-semibold"
+                  className="grid min-w-[100px]"
                   onClick={() => {
                     deleteHandler(el.id);
                   }}
                 >
-                  Удалить
+                  <img
+                    className="h-[calc(30px+1vw)] justify-self-center"
+                    src={trashIcon}
+                    alt="delete"
+                  />
                 </button>
               </td>
             </tr>

@@ -5,7 +5,7 @@
         
         border-2
         text-center
-        text-xl 
+        text-[calc(5px+1vw)] 
         text-slate-600
         font-light;
 }

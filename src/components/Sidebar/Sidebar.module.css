@@ -1,20 +1,20 @@
 .sidebar {
 	@apply 
         grid
-        bg-amber-500
+        bg-blue-300
         rounded-[12px_0_0_12px]
 
-		  min-w-[150px]
+        min-w-[150px]
 
-		  h-full
-		  w-full;
+	h-full
+	w-full;
 }
 
 .sidebarList {
 	@apply my-2
         
         text-slate-100
-        text-2xl
+        text-[calc(10px+1vw)]
         font-semibold;
 }
 
@@ -31,7 +31,7 @@
 .active {
 	@apply bg-slate-100
 
-        text-amber-500;
+        text-blue-300;
 }
 
 .exitImg {

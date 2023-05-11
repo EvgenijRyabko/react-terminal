@@ -3,7 +3,7 @@
 .homeContainer {
 	@apply grid
         
-        grid-cols-[2fr_8fr]
+        grid-cols-[2fr_10fr]
         
         bg-slate-100 
         
