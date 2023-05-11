@@ -7,7 +7,7 @@ function LoginHead() {
     <div className={classes.head}>
       <div className={classes.container}>
         <img src={authLogo} alt="authLogo.svg" />
-        <p>Autorization</p>
+        <p>Авторизация</p>
       </div>
     </div>
   );

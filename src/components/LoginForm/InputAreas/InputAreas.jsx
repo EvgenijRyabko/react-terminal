@@ -12,7 +12,7 @@ function InputAreas({ setLogin = (f) => f, setPassword = (f) => f }) {
             className="peer"
             required
             minLength={4}
-            placeholder="Login"
+            placeholder="Введите логин"
             onChange={(e) => setLogin(e.target.value)}
           />
         </div>
@@ -25,7 +25,7 @@ function InputAreas({ setLogin = (f) => f, setPassword = (f) => f }) {
             className="peer"
             required
             minLength={4}
-            placeholder="Password"
+            placeholder="Введите пароль"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>

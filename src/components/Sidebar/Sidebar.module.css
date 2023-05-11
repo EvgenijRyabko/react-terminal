@@ -1,8 +1,7 @@
 .sidebar {
 	@apply 
         grid
-
-        bg-amber-600
+        bg-amber-500
         rounded-[12px_0_0_12px]
 
 		  min-w-[150px]
@@ -32,7 +31,7 @@
 .active {
 	@apply bg-slate-100
 
-        text-amber-600;
+        text-amber-500;
 }
 
 .exitImg {
@@ -46,5 +45,5 @@
         @apply
 
         place-self-center
-        w-[25%]
+        w-[20%]
 }

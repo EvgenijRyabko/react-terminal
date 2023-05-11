@@ -15,7 +15,7 @@
 }
 
 .uploadButton {
-	@apply w-4/6
+	@apply 
         h-4/6
         min-w-[110px]
         min-h-[50px]

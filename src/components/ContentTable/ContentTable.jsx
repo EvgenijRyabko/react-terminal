@@ -12,24 +12,24 @@ function ContentTable({ headers, dataArray, keys, deleteHandler = (f) => f }) {
             {headers.map((el, id) => (
               <th key={id}>{el}</th>
             ))}
-            <th>Action</th>
+            <th>Действие</th>
           </tr>
         </thead>
         <tbody>
           {dataArray.map((el) => (
             <tr key={el.id}>
               {[...keys].map((key, id) => (
-                <td>{el[keys[id]]}</td>
+                <td className="min-w-[300px]">{el[keys[id]]}</td>
               ))}
               <td>
                 <button
                   type="button"
-                  className="rounded-[6px] w-[100px] h-[30px] bg-rose-600 text-white font-semibold"
+                  className="rounded-[6px] min-w-[100px] h-[30px] bg-rose-600 text-white font-semibold"
                   onClick={() => {
                     deleteHandler(el.id);
                   }}
                 >
-                  Remove
+                  Удалить
                 </button>
               </td>
             </tr>

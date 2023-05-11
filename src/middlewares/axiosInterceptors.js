@@ -2,6 +2,8 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import Swal from 'sweetalert2';
 
+var isAbsoluteURLRegex = /^(?:\w+:)\/\//;
+
 // Show message before user has been exited from account
 // getPopup :: () -> void
 const getPopup = async () => {
@@ -36,6 +38,9 @@ const getPopup = async () => {
 // Attach the token to the request header each time the server is contacted
 axios.interceptors.request.use((config) => {
   const cookies = new Cookies();
+  if (!isAbsoluteURLRegex.test(config.url)) {
+    config.url = `${import.meta.env.VITE_BASE_URL}${config.url}`;
+  }
   if (cookies.get('auth-token')) config.headers['auth-token'] = cookies.get('auth-token');
   return config;
 });
