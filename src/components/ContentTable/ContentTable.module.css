@@ -2,6 +2,8 @@
 	@apply min-w-full
 
         break-all
+
+        border-slate-300
         
         border-2
         text-center
@@ -12,22 +14,26 @@
 
 .contentTable thead {
 	@apply border-b
+        border-slate-300
 		font-medium;
 }
 
 .contentTable th {
 	@apply border-r
+        border-slate-300
         
         px-6 
         py-4;
 }
 
 tbody tr {
-	@apply border-b;
+	@apply border-b
+        border-slate-300;
 }
 
 tbody td {
 	@apply border-r
+        border-slate-300
         
         px-6 
         py-4

@@ -21,7 +21,7 @@
         min-h-[50px]
 
         border-2
-        border-blue-300
+        border-[#607d8b]
         rounded-[12px]
 
         py-2
@@ -31,7 +31,7 @@
 
         mx-2
 
-        text-blue-300
+        text-[#607d8b]
         text-[calc(10px+1vw)]
         font-semibold
 
@@ -41,7 +41,8 @@
 }
 
 .uploadButton:hover {
-	@apply bg-blue-300
+	@apply bg-[#607d8b]
+        shadow-[0_0_10px_#607d8b]
 
         text-white
 
@@ -66,7 +67,7 @@
         rounded-xl 
 
         text-slate-600
-        text-[calc(10px+1vw)]
+        text-[calc(12px+1vw)]
         
         outline-none 
         
@@ -106,7 +107,8 @@
         
         text-base 
         font-normal 
-        text-neutral-700 
+        text-neutral-700
+        text-[calc(4px+1vw)] 
         
         transition duration-300 
         ease-in-out 

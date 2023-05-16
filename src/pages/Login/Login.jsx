@@ -11,7 +11,7 @@ import classes from '../../components/LoginForm/LoginForm.module.css';
 
 const signIn = async (payload) => {
   try {
-    const response = await axios.post('http://localhost:8080/api/auth', payload);
+    const response = await axios.post('api/auth', payload);
     return response.data;
   } catch (e) {
     Swal.fire('Error', e?.response?.data.error || 'Произошла непредвиденная ошибка', 'error');
@@ -66,7 +66,7 @@ function Login() {
       setCookie('auth-token', token, { path: '/' });
       setCookie('id-user', idPerson, { path: '/' });
 
-      navigate('/');
+      navigate('/home');
     }
   };
 

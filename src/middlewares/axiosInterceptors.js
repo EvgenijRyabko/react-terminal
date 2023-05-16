@@ -13,15 +13,15 @@ const getPopup = async () => {
     title: 'Ваша сессия истекла!',
     html: `Вы не проявляли активности в программе более 30 минут.
     Для того что-бы обезопасить данные студентов во время вашего отсутствия, ваша сессия была прервана.
-    Вы будете возвращены на страницу авторизации через <b></b> миллисекунд.`,
+    Вы будете возвращены на страницу авторизации через <b></b> секунд.`,
     timer: 5000, // 5 seconds
     timerProgressBar: true,
     didOpen: () => {
       Swal.showLoading();
       const b = Swal.getHtmlContainer().querySelector('b');
       timerInterval = setInterval(() => {
-        b.textContent = Swal.getTimerLeft();
-      }, 100);
+        b.textContent = Math.round(Swal.getTimerLeft() / 1000);
+      }, 1000);
     },
     willClose: () => {
       clearInterval(timerInterval);

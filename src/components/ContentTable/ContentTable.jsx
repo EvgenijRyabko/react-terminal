@@ -20,7 +20,9 @@ function ContentTable({ headers, dataArray, keys, deleteHandler = (f) => f }) {
           {dataArray.map((el) => (
             <tr key={el.id}>
               {[...keys].map((key, id) => (
-                <td className="min-w-[300px]">{el[keys[id]]}</td>
+                <td key={id} className="min-w-[300px]">
+                  {el[keys[id]]}
+                </td>
               ))}
               <td>
                 <button

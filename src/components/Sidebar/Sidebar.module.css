@@ -1,7 +1,7 @@
 .sidebar {
 	@apply 
         grid
-        bg-blue-300
+        bg-[#607d8b]
         rounded-[12px_0_0_12px]
 
         min-w-[150px]
@@ -31,7 +31,7 @@
 .active {
 	@apply bg-slate-100
 
-        text-blue-300;
+        text-[#607d8b];
 }
 
 .exitImg {
