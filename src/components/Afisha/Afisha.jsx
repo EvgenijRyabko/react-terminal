@@ -72,7 +72,7 @@ function AfishaPage({ terminalId, setTerminal = (f) => f }) {
   };
 
   return (
-    <>
+    <div className="min-w-full">
       <Upload
         setData={setData}
         setTerminal={setTerminal}
@@ -106,7 +106,7 @@ function AfishaPage({ terminalId, setTerminal = (f) => f }) {
       ) : (
         <div />
       )}
-    </>
+    </div>
   );
 }
 

@@ -9,7 +9,7 @@ function LoginForm({ signIn = (f) => f, setLogin = (f) => f, setPassword = (f) =
       <LoginHead />
       <InputAreas setPassword={setPassword} setLogin={setLogin} />
       <div className={classes.buttonContainer}>
-        <button type="button" onClick={(e) => signIn(e)}>
+        <button type="submit" onClick={(e) => signIn(e)}>
           Войти
         </button>
       </div>

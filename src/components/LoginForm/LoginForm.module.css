@@ -11,11 +11,15 @@
         shadow-md 
         shadow-slate-100
 		  
-		  place-self-center
+	/* place-self-center */
+        justify-self-center
         
         rounded-xl 
+
+        my-10
         
-		  h-5/6
+
+        h-4/6
         w-9/12
         min-w-[700px] 
         min-h-[500px] 

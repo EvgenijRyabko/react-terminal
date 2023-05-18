@@ -14,12 +14,10 @@
 	@apply grid 
         
         bg-slate-200 
-        
-        items-center
 
-	py-10
+	/* py-10 */
         
-        min-h-screen
+        min-h-full
         
         min-w-[1000px];
 }

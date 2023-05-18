@@ -10,9 +10,7 @@ function Home() {
   return (
     <div className={classes.homeContainer}>
       <Sidebar />
-      <div className="min-w-full">
-        <AfishaPage terminalId={terminal} setTerminal={setTerminal} />
-      </div>
+      <AfishaPage terminalId={terminal} setTerminal={setTerminal} />
       <HelmetProvider>
         <Helmet title="Главная" />
       </HelmetProvider>
