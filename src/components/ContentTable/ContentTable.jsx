@@ -24,10 +24,10 @@ function ContentTable({ headers, dataArray, keys, deleteHandler = (f) => f }) {
                   {el[keys[id]]}
                 </td>
               ))}
-              <td>
+              <td className="grid">
                 <button
                   type="button"
-                  className="grid min-w-[100px]"
+                  className="grid min-w-[100px] justify-self-center"
                   onClick={() => {
                     deleteHandler(el.id);
                   }}

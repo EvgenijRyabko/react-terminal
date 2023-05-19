@@ -13,9 +13,9 @@
 
 	place-self-center
         
-        my-10
+        my-14
+        mx-24
         
-        w-5/6
 	/* h-5/6 */
         min-w-[750px]
         min-h-screen

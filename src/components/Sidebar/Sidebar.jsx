@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -15,7 +15,7 @@ const logOut = async () => {
   }
 };
 
-function Sidebar() {
+function Sidebar({ tab, setTab = (f) => f }) {
   const navigate = useNavigate();
   const cookies = ['auth-token', 'selected-tab'];
   const [, , removeCookie] = useCookies(cookies);
@@ -31,11 +31,15 @@ function Sidebar() {
   return (
     <aside className={classes.sidebar}>
       <ul className={classes.sidebarList}>
-        <li className={classes.active}>
-          <NavLink to="/afishi">Афиши</NavLink>
+        <li className={(tab === 1 && classes.active) || ''}>
+          <button type="button" onClick={() => setTab(1)}>
+            Афиши
+          </button>
         </li>
-        <li>
-          <a href="/">PDF</a>
+        <li className={(tab === 2 && classes.active) || ''}>
+          <button type="button" onClick={() => setTab(2)}>
+            PDF
+          </button>
         </li>
       </ul>
       <div className={classes.exitImg}>

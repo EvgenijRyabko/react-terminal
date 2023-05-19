@@ -14,7 +14,7 @@
 	@apply my-2
         
         text-slate-100
-        text-[calc(10px+1vw)]
+        text-2xl
         font-semibold;
 }
 

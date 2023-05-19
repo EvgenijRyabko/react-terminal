@@ -32,7 +32,7 @@
         mx-2
 
         text-[#607d8b]
-        text-[calc(10px+1vw)]
+        text-xl
         font-semibold
 
         opacity-100
@@ -67,7 +67,7 @@
         rounded-xl 
 
         text-slate-600
-        text-[calc(12px+1vw)]
+        text-xl
         
         outline-none 
         
@@ -108,7 +108,6 @@
         text-base 
         font-normal 
         text-neutral-700
-        text-[calc(4px+1vw)] 
         
         transition duration-300 
         ease-in-out 

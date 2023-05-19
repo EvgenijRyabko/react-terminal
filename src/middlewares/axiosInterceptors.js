@@ -49,7 +49,10 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response.status === 419) await getPopup();
+    if (error.response.status === 419) {
+      await getPopup();
+      return Promise.resolve(error);
+    }
     return Promise.reject(error);
   },
 );
